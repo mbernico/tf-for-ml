@@ -23,7 +23,7 @@ variable "compute_zone" {
 
 variable "tags" {
     description = "Tags to associate with the instance."
-    type="list"
+    type = list(string)
     default = ["caip-notebook"]
 }
 
@@ -34,4 +34,13 @@ variable "dl_image_name" {
 
 variable "tpu_name" {
   description = "Name of a TPU"
+  default = "none"
+}
+
+variable "service_account_id" {
+    description = "Service Account to create the VM under"
+}
+
+variable "project_id" {
+    description = "Project to create the resource in."
 }

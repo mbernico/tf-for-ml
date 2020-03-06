@@ -6,12 +6,19 @@
 # CAIP Notebook Terraform Module
 # This module creates a CAIP notebook.
 
-resource "google_compute_instance" "${var.instance_name}" {
-  name         = "${var.instance_name}"
-  machine_type = "${var.machine_type}"
-  zone         = "${var.compute_zone}"
+resource "google_service_account" "service_account" {
+  account_id   = var.service_account_id
+  display_name = "Service Account for ${var.instance_name}."
+}
 
-  tags = ["${var.tags}"]
+resource "google_compute_instance" "caip_notebook" {
+  name = var.instance_name
+  machine_type = var.machine_type
+  zone = var.compute_zone
+  can_ip_forward = false
+  project = var.project_id
+
+  tags = var.tags
 
   boot_disk {
     initialize_params {
@@ -35,5 +42,10 @@ resource "google_compute_instance" "${var.instance_name}" {
   pip install tf-nightly
   echo "export TPU_NAME=${var.tpu_name}" > /etc/profile.d/tpu-env.sh
   SCRIPT
+
+  service_account {
+    email = "${var.service_account_id}@${var.project_id}.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 
 }
