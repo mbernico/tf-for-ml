@@ -6,17 +6,12 @@
 # CAIP Notebook Terraform Module
 # This module creates a CAIP notebook.
 
-resource "google_service_account" "service_account" {
-  account_id   = var.service_account_id
-  display_name = "Service Account for ${var.instance_name}."
-}
-
 resource "google_compute_instance" "caip_notebook" {
   name = var.instance_name
   machine_type = var.machine_type
+  project = var.project_id
   zone = var.compute_zone
   can_ip_forward = false
-  project = var.project_id
 
   tags = var.tags
 
