@@ -4,9 +4,10 @@ This repo contains a set of Terraform modules that can be used to create common 
 
 
 ## Project Structure
-.
-|-modules
-  |-CAIP-Notebook
-  |-TPU
-|-services
-  |-CAIP-Notebook-and-TPU
+.  
+|-modules  
+  |-CAIP-Notebook  
+  |-TPU  
+|-services  
+  |-CAIP-Notebook-and-TPU  
+  

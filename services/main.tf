@@ -1,13 +1,6 @@
 provider "google" {
-  project = "mikebernico-sandbox"
+  project = var.project-id
 }
-
-#data "google_iam_policy" "compute-admin" {
-#  binding {
-#    role = "roles/compute.admin"
-#    members = []
-#  }
-#}
 
 resource "google_service_account" "service_account" {
   account_id   = var.sa-account-id

@@ -8,7 +8,7 @@
 
 variable "sa-account-id" {
     description="Name for CAIP notebook SA"
-    default = "CAIP-notebook-sa"
+    default = "caip-notebook-sa"
 }
 
 variable "project-id" {
